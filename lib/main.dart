@@ -1,8 +1,5 @@
-import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher_package_use/homepage.dart';
 import 'package:url_launcher_package_use/splace_screen.dart';
 
 void main() {
@@ -23,7 +20,7 @@ class MyApp extends StatelessWidget {
           elevation: 0,
           centerTitle: true,
           titleTextStyle: TextStyle(
-              color: Colors.blue, fontWeight: FontWeight.w700, fontSize: 20),
+              color: Colors.white, fontWeight: FontWeight.w700, fontSize: 20),
         ),
       ),
       home: SplaceScreen(),

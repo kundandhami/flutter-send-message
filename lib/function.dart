@@ -97,7 +97,7 @@ whatsAppMsg(String number, String msg) async {
   Uri uri = Uri.parse("whatsapp://send?phone=+91$number&text=$msg");
   Uri iosuri = Uri.parse("https://wa.me/+919512829152?text=hello");
   if (await canLaunchUrl(uri as Uri)) {
-    launchUrl(uri as Uri);
+    launchUrl(uri);
   } else {
     throw ("whats error");
   }
