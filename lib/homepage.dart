@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'function.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -104,20 +104,23 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: 15,
                 ),
-                button("Whats App Message", () {
-                  showsdialog(
-                      checks: true,
-                      context: context,
-                      numbercontroller: numbercontroller,
-                      textcontroller: textcontroller,
-                      input: 2,
-                      title: "WhatsApp ",
-                      hint1: "Phone Number  ",
-                      hint2: "message",
-                      methods: () => whatsAppMsg(numbercontroller.text.trim(),
-                          textcontroller.text.trim()),
-                      fk: gk);
-                }),
+                button(
+                  "Whats App Message",
+                  () {
+                    showsdialog(
+                        checks: true,
+                        context: context,
+                        numbercontroller: numbercontroller,
+                        textcontroller: textcontroller,
+                        input: 2,
+                        title: "WhatsApp ",
+                        hint1: "Phone Number  ",
+                        hint2: "message",
+                        methods: () => whatsAppMsg(numbercontroller.text.trim(),
+                            textcontroller.text.trim()),
+                        fk: gk);
+                  },
+                ),
                 SizedBox(
                   height: 15,
                 ),
@@ -164,7 +167,6 @@ class customcliper extends CustomClipper<Path> {
   }
 }
 
-//hello change
 //hello change
 class customcliper1 extends CustomClipper<Path> {
   @override
