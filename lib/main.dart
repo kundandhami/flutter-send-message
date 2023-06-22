@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher_package_use/splace_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
           elevation: 0,
           centerTitle: true,
@@ -23,7 +22,7 @@ class MyApp extends StatelessWidget {
               color: Colors.white, fontWeight: FontWeight.w700, fontSize: 20),
         ),
       ),
-      home: SplaceScreen(),
+      home: const SplaceScreen(),
     );
   }
 }

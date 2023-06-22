@@ -14,11 +14,11 @@ class _SplaceScreenState extends State<SplaceScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer(Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 3), () {
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
-            builder: (context) => HomePage(),
+            builder: (context) => const HomePage(),
           ),
           (route) => false);
     });
@@ -29,10 +29,10 @@ class _SplaceScreenState extends State<SplaceScreen> {
     return Scaffold(
       body: Container(
         alignment: Alignment.center,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("images/images.jpg"), fit: BoxFit.fitHeight)),
-        child: Text(
+        child: const Text(
           "Url launcher",
           style: TextStyle(
               fontSize: 22, color: Colors.white, fontWeight: FontWeight.w500),

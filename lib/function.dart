@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -18,8 +19,8 @@ showsdialog(
     builder: (context) => Form(
       key: fk,
       child: SimpleDialog(
-        titlePadding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-        contentPadding: EdgeInsets.all(15),
+        titlePadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        contentPadding: const EdgeInsets.all(15),
         backgroundColor: Colors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         title: Text(title),
@@ -35,7 +36,7 @@ showsdialog(
               return null;
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           input > 1
@@ -50,21 +51,22 @@ showsdialog(
                     return null;
                   },
                 )
-              : SizedBox.shrink(),
-          SizedBox(
+              : const SizedBox.shrink(),
+          const SizedBox(
             height: 30,
           ),
           TextButton(
-            onPressed: () async {
+            onPressed: () {
               if (fk.currentState?.validate() == true) {
                 methods();
-                await Future.delayed(Duration(seconds: 3));
-                textcontroller.clear();
-                numbercontroller.clear();
-                Navigator.pop(context);
+                Future.delayed(const Duration(seconds: 3)).whenComplete(() {
+                  textcontroller.clear();
+                  numbercontroller.clear();
+                  Navigator.pop(context);
+                });
               }
             },
-            child: Text("Send",
+            child: const Text("Send",
                 style: TextStyle(
                     backgroundColor: Colors.white,
                     fontSize: 22,
@@ -81,22 +83,20 @@ emailMsg(
   String mail,
   String msg,
 ) async {
-  Uri url = Uri(
-      scheme: 'mailto',
-      path: mail,
-      query:
-          'subject=${Uri.encodeComponent("test is herer")}&body=${Uri.encodeComponent("$msg")}');
+  Uri url = Uri(scheme: 'mailto', path: mail, query: 'subject=${Uri.encodeComponent("test is herer")}&body=${Uri.encodeComponent(msg)}');
   if (await canLaunchUrl(url)) {
     await launchUrl(url);
   } else {
-    print("error in the email=========");
+    if (kDebugMode) {
+      print("error in the email=========");
+    }
   }
 }
 
 whatsAppMsg(String number, String msg) async {
   Uri uri = Uri.parse("whatsapp://send?phone=+91$number&text=$msg");
   Uri iosuri = Uri.parse("https://wa.me/+919512829152?text=hello");
-  if (await canLaunchUrl(uri as Uri)) {
+  if (await canLaunchUrl(uri)) {
     launchUrl(uri);
   } else {
     throw ("whats error");
@@ -111,14 +111,13 @@ whatsAppMsg(String number, String msg) async {
 }
 
 sendSms(String number, String msg) async {
-  final Uri sms = Uri(
-      scheme: "sms",
-      path: "+91$number",
-      queryParameters: {'body': Uri.encodeComponent("$msg")});
+  final Uri sms = Uri(scheme: "sms", path: "+91$number", queryParameters: {'body': Uri.encodeComponent(msg)});
   if (await canLaunchUrl(sms)) {
     await launchUrl(sms);
   } else {
-    print("sms cannot launch=======");
+    if (kDebugMode) {
+      print("sms cannot launch=======");
+    }
   }
 }
 
@@ -127,7 +126,9 @@ phoneCall(String number) async {
   if (await canLaunchUrl(uri)) {
     launchUrl(uri);
   } else {
-    print("phone can not launch-----------");
+    if (kDebugMode) {
+      print("phone can not launch-----------");
+    }
   }
 }
 
@@ -145,3 +146,4 @@ Widget textfield(
     ),
   );
 }
+ 

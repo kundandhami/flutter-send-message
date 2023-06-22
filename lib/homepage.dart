@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'function.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -15,11 +15,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     double ht = MediaQuery.of(context).size.height;
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("Url_Launcher"),
+        title: const Text("Url_Launcher"),
         backgroundColor: Colors.redAccent,
       ),
       body: Stack(
@@ -27,7 +26,7 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             height: 200,
             child: ClipPath(
-              clipper: customcliper(),
+              clipper: Customcliper(),
               child: Container(
                 color: Colors.redAccent,
               ),
@@ -40,7 +39,7 @@ class _HomePageState extends State<HomePage> {
             child: SizedBox(
               height: 180,
               child: ClipPath(
-                clipper: customcliper1(),
+                clipper: Customcliper1(),
                 child: Container(
                   color: Colors.red,
                 ),
@@ -68,7 +67,7 @@ class _HomePageState extends State<HomePage> {
                           textcontroller.text.trim()),
                       fk: gk);
                 }),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 button("Send Email", () {
@@ -85,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                           textcontroller.text.trim()),
                       fk: gk);
                 }),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 button("Phone Call", () {
@@ -101,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                       methods: () => phoneCall(numbercontroller.text),
                       fk: gk);
                 }),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 button(
@@ -121,7 +120,7 @@ class _HomePageState extends State<HomePage> {
                         fk: gk);
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
               ],
@@ -138,17 +137,17 @@ class _HomePageState extends State<HomePage> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),
-      textStyle: TextStyle(color: Colors.white),
+      textStyle: const TextStyle(color: Colors.white),
       onPressed: function,
       child: Text(
         title,
-        style: TextStyle(fontSize: 18),
+        style: const TextStyle(fontSize: 18),
       ),
     );
   }
 }
 
-class customcliper extends CustomClipper<Path> {
+class Customcliper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     double height = size.height;
@@ -168,7 +167,7 @@ class customcliper extends CustomClipper<Path> {
 }
 
 //hello change
-class customcliper1 extends CustomClipper<Path> {
+class Customcliper1 extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     double height = size.height;
